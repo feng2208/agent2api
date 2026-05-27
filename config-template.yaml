@@ -1,0 +1,34 @@
+listen: "0.0.0.0:8080"
+api_keys:
+  - "sk-your-gateway-key"
+
+agents:
+  - name: "codex"
+    command: "E:/bin/codex-acp.exe"
+    cwd: "E:/tmp/workspace/codex"
+    models:
+      - name: "gpt-5.4-mini-low"
+        max_idle_sessions: 1
+        options:
+          - model: "gpt-5.4-mini"
+          - reasoning_effort: "low"
+
+  - name: "kiro"
+    command: "E:/bin/kiro-cli.exe"
+    cwd: "E:/tmp/workspace/kiro"
+    args: ["acp"]
+    models:
+      - name: "deepseek-3.2"
+        max_idle_sessions: 1
+        extra_args: ["--model", "deepseek-3.2"]
+
+  - name: "cursor"
+    command: "E:/bin/cursor-agent.cmd"
+    cwd: "E:/tmp/workspace/cursor"
+    args: ["acp"]
+    models:
+      - name: "auto"
+        max_idle_sessions: 1
+        options:
+          - model: "default[]"
+          - mode: "ask"
